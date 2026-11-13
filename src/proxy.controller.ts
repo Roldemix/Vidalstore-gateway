@@ -47,4 +47,9 @@ export class ProxyController {
   revocar(@Headers('authorization') a: string, @Param('licenciaId') id: string, @Body() body: unknown) {
     return reenviar(this.bff, 'DELETE', `/licencias/${encodeURIComponent(id)}`, a, body);
   }
+
+  @Get('panel/en-vivo')
+  panelEnVivo(@Headers('authorization') a: string) {
+    return reenviar(this.bff, 'GET', '/panel/en-vivo', a);
+  }
 }
